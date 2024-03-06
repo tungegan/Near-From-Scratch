@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-03-06 Wed 14:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LẬP TRÌNH SMART CONTRACT TRÊN NEAR</title>
+<meta name="author" content="Mai Xuan Tung" />
+<meta name="description" content="Tài liệu này giúp bạn có cái nhìn tổng quan về lập trình smart contract. Cài đặt và bắt đầu lập trình smart contract trên Near" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<style>pre.src{background:#343131;color:white;} </style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">LẬP TRÌNH SMART CONTRACT TRÊN NEAR</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7aa19c0">1. Cài đặt môi trường lập trình với smart contract với Near</a>
+<ul>
+<li><a href="#org7e964b9">1.1. Cài đặt Rust</a></li>
+<li><a href="#orgd640ad3">1.2. Cài đặt Near CLI</a></li>
+<li><a href="#orgb20803b">1.3. Cài đặt cargo-near</a></li>
+<li><a href="#org07dc2bc">1.4. Tương tác với NEAR smart contract</a></li>
+</ul>
+</li>
+<li><a href="#org91dc01e">2. Tài liệu Rust</a></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<ul class="org-ul">
+<li>Github: <a href="https://github.com/tungegan">https://github.com/tungegan</a></li>
+<li>mail: mxt.tung@gmail.com</li>
+<li>Live coding và thảo luận 19h30 thứ 3 hàng tuần tại <a href="https://discord.gg/Qq9eYFxjm5">NEAR Developers Vietnam</a></li>
+<li>Video xem lại tại: <a href="https://www.youtube.com/@VBIAcademy">VBI Academy</a></li>
+<li>Tham gia discord của VBI để cập nhật liên tục những thông tin về lập trình blockchain tại: <a href="https://discord.gg/XZ2DPQB88R">VBI Academy</a></li>
+</ul>
+</blockquote>
+<div id="outline-container-org7aa19c0" class="outline-2">
+<h2 id="org7aa19c0"><span class="section-number-2">1.</span> Cài đặt môi trường lập trình với smart contract với Near</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org7e964b9" class="outline-3">
+<h3 id="org7e964b9"><span class="section-number-3">1.1.</span> Cài đặt Rust</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Linux/MacOs</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-nil">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Window: Hướng dẫn cài đặt môi trường lập trình Rust. Youtube VBI Academy <a href="https://www.youtube.com/watch?v=FgIr4CW6G9g">click</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd640ad3" class="outline-3">
+<h3 id="orgd640ad3"><span class="section-number-3">1.2.</span> Cài đặt Near CLI</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li><p>
+Linux/MacOs
+</p>
+<ul class="org-ul">
+<li>cài đặt npm và node theo distro <a href="https://nodejs.org/en/download/package-manager/">click</a></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-nil">    npm install -g near-cli
+</pre>
+</div></li>
+<li>Window
+<ul class="org-ul">
+<li><a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual">Cài đặt WSL</a></li>
+<li><a href="https://docs.npmjs.com/getting-started">Cài đặt npm</a></li>
+<li><a href="https://nodejs.org/en/download/package-manager/">Cài đặt Node.js</a></li>
+<li>Thay đổi npm directory mặc định.Tránh vến đề về quyền với WSL <a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory">Click</a></li>
+<li><p>
+Mở WSL và chạy lệnh
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">      npm install -g near-cli
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb20803b" class="outline-3">
+<h3 id="orgb20803b"><span class="section-number-3">1.3.</span> Cài đặt cargo-near</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-nil">cargo install cargo-near
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org07dc2bc" class="outline-3">
+<h3 id="org07dc2bc"><span class="section-number-3">1.4.</span> Tương tác với NEAR smart contract</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-nil">cargo near --help
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Tạo tài khoản Near
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">    cargo near create-dev-account
+</pre>
+</div></li>
+
+<li><p>
+Khởi tạo dự án mới
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">    cargo near new
+</pre>
+</div></li>
+
+<li><p>
+Deloy contract
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">    cargo near deploy
+</pre>
+</div></li>
+
+<li><p>
+Function call
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">    near call --help
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-nil">    near call &lt;contractName&gt; &lt;methodName&gt; [args]
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org91dc01e" class="outline-2">
+<h2 id="org91dc01e"><span class="section-number-2">2.</span> Tài liệu Rust</h2>
+<div class="outline-text-2" id="text-2">
+<blockquote>
+<p>
+<a href="https://www.youtube.com/watch?v=XiS7MB23NoE&amp;list=PLFnEYduGTiXE2ejxmzTIraP2feI-pmeuw">Ngôn Ngữ Lập Trình Rust - Cơ Bản</a>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mai Xuan Tung</p>
+<p class="date">Created: 2024-03-06 Wed 14:32</p>
+</div>
+</body>
+</html>
